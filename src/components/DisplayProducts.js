@@ -38,7 +38,6 @@ this.state.products.map( product => {
 })
 }
 
-<AddProduct />
 </div>
 )
 }//end of the render method

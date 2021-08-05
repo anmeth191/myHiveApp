@@ -16,7 +16,7 @@ constructor(props){
 getProductsByCategory = async ()=>{
  
 await axios.get(`http://localhost:8000/categoryproducts?category=${this.state.id_category}`).then( response =>{ 
-console.log(response.data)
+this.setState({products:response.data.body})
 }).catch( error =>{ console.log(error)})
 
 }
@@ -29,7 +29,18 @@ render(){
     return(
         <div>
             <h1>ID CATEGORY</h1>
-          {this.state.id_category}
+          {
+          this.state.products.map( product =>{
+            return (
+               <div key={ product.id_product}>
+                   <h1>{product.productName}</h1>
+                   <img src={`data:image/jpg;base64,${product.productPhoto}`} height="200px" />
+
+                   </div>
+              )
+          })
+          
+          }
             </div>
     )
 }
