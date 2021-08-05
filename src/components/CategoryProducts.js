@@ -28,6 +28,7 @@ this.getProductsByCategory();
 render(){
     return(
         <div>
+            <h1>ID CATEGORY</h1>
           {this.state.id_category}
             </div>
     )
