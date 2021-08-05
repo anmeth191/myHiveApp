@@ -29,7 +29,7 @@ connectionDB.query(`insert into product (productName , productDescription, produ
     else{
       
 response.json({
-    message:'Your product has been has been saved'
+    message:'Your product has been has been saved into the database'
 })
 
 }//end of the else
