@@ -23,12 +23,10 @@ await axios.get('http://127.0.0.1:8000/categories').then( (response)  =>{
 componentDidMount(){
   this.getCategories() 
 }
-
 render(){
 
    return(
  <div>
-    <li><Link to="/">Home</Link></li>
     {
    this.state.categories.map( category => { 
     return(

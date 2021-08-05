@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 
 
 
@@ -33,11 +34,10 @@ render(){
           this.state.products.map( product =>{
             return (
                <div key={ product.id_product}>
-                   <h1>{product.productName}</h1>
+                   <h1> <Link to={`/productdescription/${product.id_product}`}>{product.productName}</Link></h1>
                    <img src={`data:image/jpg;base64,${product.productPhoto}`} height="200px" />
-
                    </div>
-              )
+             )
           })
           
           }
