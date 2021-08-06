@@ -11,6 +11,7 @@ const  Navbar = ()=>{
                     <li><Link to="/categories">categories</Link></li>
                     <li><Link to="/products">Products</Link></li>
                     <li><Link to="/suppliers">Supplier</Link></li> 
+                    <li><Link to="/shoppingcart">Cart</Link></li> 
                     </ul>
                 </nav>
             </div>

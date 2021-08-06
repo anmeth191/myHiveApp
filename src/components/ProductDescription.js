@@ -10,7 +10,9 @@ constructor(props){
        id_product: this.props.match.params.id,
        product:[],
        itemsCart:0,
-       cartItems:[]
+       cartItems:[],
+       itemAdded:0,
+       itemCount:1
    }
 
 }
@@ -31,7 +33,6 @@ return element.id_product === productAdded
 })
 
 this.setState({cartItems:addProduct});
-console.log(this.props.items)
 
 //this method coming from the function saveIntoCart 
 //call the addCart that is going to send the information to my redux reducer and and save it into the Shopping Cart component
@@ -41,9 +42,10 @@ this.props.addCart(this.state.cartItems);
 
 componentDidMount(){
 this.productDescription();
+
 }
 
-render(){
+render(){ 
     return(
       <div>
           {  
@@ -56,7 +58,20 @@ render(){
                           <h5>{`${parseInt(product.productPrice)}.00 $`}</h5>
                           <h5>{` Inventory levels: ${product.productLevels}`}</h5>
                           <img src={`data:image/jpg;base64,${product.productPhoto}`} alt="product display coming from the database" height="200px"/>
-                          <button onClick={()=>{this.shoppingCartControl(product.id_product)}} >Add to the cart</button>
+                          <button onClick={()=>{  
+                              this.setState({itemAdded:1})
+                              this.shoppingCartControl(product.id_product) 
+                        }}>Add to the cart</button>
+                         <div>
+                         <button onClick={()=>{ 
+                             this.setState({itemCount:this.state.itemCount - 1})
+                             if(this.state.itemCount <= 1 ){
+                                this.setState({itemCount:1})
+                             }
+                         }}>-</button>{this.state.itemCount}<button onClick={()=>{ 
+                             this.setState({itemCount: this.state.itemCount + 1})
+                         }}>+</button>
+                         </div>
                       </div>
                   )//end of the return
               })

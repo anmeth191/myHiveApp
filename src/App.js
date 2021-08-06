@@ -9,6 +9,8 @@ import ProductDescription from './components/ProductDescription';
 import CategoryProducts from './components/CategoryProducts';
 import Navbar from './components/Navbar';
 import AddProduct from './components/AddProduct';
+import ShoppingCart from './components/ShoppingCart';
+
 class App extends React.Component{
 
 render(){
@@ -24,6 +26,7 @@ return(
         <Route  path="/productdescription/:id" component={ ProductDescription }/>
         <Route  path="/categoryproducts/:id" component={ CategoryProducts }/>
          <Route path="/addproduct"  component={ AddProduct }/>
+         <Route  path="/shoppingcart" component={ ShoppingCart }/>
 
       </Switch>
       </Router>
