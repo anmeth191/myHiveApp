@@ -10,9 +10,9 @@ constructor(props){
        id_product: this.props.match.params.id,
        product:[],
        itemsCart:0,
-       cartItems:[],
-       itemAdded:0,
-       itemCount:1
+       cartItems:[],//this push the items in the cart 
+       itemAdded:0,//this controls when the add cart button has been clicked change the state to 1
+       itemCount:1//this controls the quantity of the items added to the cart
    }
 
 }
@@ -37,7 +37,7 @@ this.setState({cartItems:addProduct});
 //this method coming from the function saveIntoCart 
 //call the addCart that is going to send the information to my redux reducer and and save it into the Shopping Cart component
 //passing the state.cartItmes as prop to save everyelement that is added 
-this.props.addCart(this.state.cartItems);
+this.props.addCart(this.state.cartItems , this.state.itemCount);
 }
 
 componentDidMount(){
@@ -64,6 +64,8 @@ render(){
                         }}>Add to the cart</button>
                          <div>
                          <button onClick={()=>{ 
+                             //increment the number of items when the + button is pressed and decrement when - button is pressed 
+                             //but if decrement number is less than 1 then set the state to 1
                              this.setState({itemCount:this.state.itemCount - 1})
                              if(this.state.itemCount <= 1 ){
                                 this.setState({itemCount:1})
@@ -88,9 +90,8 @@ const showItemsCart = (state) =>{
 
 //this is my redux method that is going to dispatch the action addCart to the reducer 
 const saveIntoCart = (dispatch)=>{
-
     return {
-        addCart:(item)=>{ dispatch({ type:'ADD_ITEM' , item})}
+        addCart:(item , itemsquantity)=>{ dispatch({ type:'ADD_ITEM' , item , itemsquantity})}
     }
 }
 export default connect(showItemsCart,saveIntoCart)(ProductDescription);
