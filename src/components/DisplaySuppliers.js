@@ -24,12 +24,13 @@ this.getCategories()
 render(){
    return(
  <div>
+    <li><Link to="/">Home</Link></li>
     {
    this.state.categories.map( supplier => { 
     return(
       <div key={supplier.id_supplier}>
          <ul>
-            <li><Link to={`/supplierdetail`}>{supplier.supplierName}</Link></li>
+            <li><Link to={`/supplierInfo`}>{supplier.supplierName}</Link></li>
            </ul>
         </div>
     )

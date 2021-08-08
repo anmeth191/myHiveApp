@@ -7,7 +7,9 @@ class Dashboard extends React.Component{
     render(){
         return(
             <div>
-           this is the Dashboard component
+            <Link to="/categories">Categories</Link>
+            <Link to="/products">Products</Link>
+            <Link to="/suppliers">Suppliers</Link>
             </div>
             )
          }
