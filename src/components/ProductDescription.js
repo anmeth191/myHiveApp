@@ -28,6 +28,7 @@ productDescription = async ()=>{
  //Create a function that controls the items are pushed into the cart
 shoppingCartControl = async (productAdded) => {
 
+    //loop throught the array abnd find the element and then looks the one that match the id sent from the click button and set it in the state
 const addProduct = await this.state.product.find( element =>{ 
 return element.id_product === productAdded
 })
@@ -49,7 +50,7 @@ render(){
     return(
       <div>
           {  
-          this.state.product.map( product => {
+          this.state.product.map( (product) => {
                   return( 
                       <div key={product.id_product}>
                           <h1>{ product.productName }</h1>
