@@ -21,24 +21,28 @@ module.exports = (app) => {
 app.get('/categories' , (request , response )=>{
  connectionDB.query('SELECT * FROM category' , (error , resultsDB )=>{ 
      if(error) throw error;
-     else { categoriesDB = JSON.parse(JSON.stringify(resultsDB))}
+     else { 
+      response.json({
+        message:'your request has been completed',
+        body: JSON.parse(JSON.stringify(resultsDB))
+       })
+     }
 })
-   response.json({
-    message:'your request has been completed',
-    body: categoriesDB
-   })
+
 })
 
 //handling the request to display the suppliers in the database
 app.get('/suppliers' , (request , response )=>{
     connectionDB.query('SELECT * FROM supplier' , (error , resultsDB )=>{ 
         if(error) throw error;
-        else { supplierDB = JSON.parse(JSON.stringify(resultsDB))}
+        else { 
+response.json({
+  message:'Your request has been submited',
+  body:JSON.parse(JSON.stringify(resultsDB))
+})
+
+        }
    })
-      response.json({
-        message:'your request has been completed',
-          body: supplierDB
-      })
    })
    
 //handling the get request from the client to display all the products in the database
