@@ -26,6 +26,9 @@ componentDidMount(){
 render(){
 return(
 <div>
+    <h1>Add a product to your inventory</h1>
+    <Link to="/addproduct">Add Product</Link>
+
 <h1>Products availables</h1>
 {   
 (this.state.products.length === 0) ? <h1 key="no" >DataBase is empty</h1> : 
@@ -33,12 +36,12 @@ this.state.products.map( product => {
     return(
         <div key={ product.id_product}>
          <Link to={`/productdescription/${product.id_product}`}> { product.productName } </Link>
-         </div>
-  )
+         <img src={`data:image/jgp;base64,${product.productPhoto}`} height="100px"/>
+         </div> 
+         )
 })
 }
 
-<AddProduct />
 </div>
 )
 }//end of the render method

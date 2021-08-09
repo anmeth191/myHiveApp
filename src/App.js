@@ -7,12 +7,17 @@ import DisplaySuppliers from './components/DisplaySuppliers';
 import DisplayProducts from './components/DisplayProducts';
 import ProductDescription from './components/ProductDescription';
 import CategoryProducts from './components/CategoryProducts';
+import Navbar from './components/Navbar';
+import AddProduct from './components/AddProduct';
+import ShoppingCart from './components/ShoppingCart';
+
 class App extends React.Component{
 
 render(){
 return(
   <div>  
     <Router>
+      <Navbar />
       <Switch>
         <Route exact path='/' component={ Dashboard } />
         <Route path="/categories"  component={ DisplayCategory } />
@@ -20,6 +25,8 @@ return(
         <Route path="/products" component={DisplayProducts} />
         <Route  path="/productdescription/:id" component={ ProductDescription }/>
         <Route  path="/categoryproducts/:id" component={ CategoryProducts }/>
+         <Route path="/addproduct"  component={ AddProduct }/>
+         <Route  path="/shoppingcart" component={ ShoppingCart }/>
 
       </Switch>
       </Router>
