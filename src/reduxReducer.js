@@ -2,7 +2,7 @@ const initialState = {
     itemsCart:[ ] 
                 
 }
-let updateQuantity = 0;
+//let updateQuantity = 0;
 const cartReducer  =  ( state = initialState , action )=>{
 
 if(action.type === 'ADD_ITEM'){
@@ -11,8 +11,8 @@ if(action.type === 'ADD_ITEM'){
 } else
 if(action.type === 'UPDATE_ITEM'){
  
-    updateQuantity = state.itemsCart[action.itemIndex].quantity ;
-    console.log(action.updatequantity );
+    //updateQuantity = state.itemsCart[action.itemIndex].quantity ;
+    //console.log(action.updatequantity );
 }
 return state;
 }

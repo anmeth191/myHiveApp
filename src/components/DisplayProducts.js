@@ -1,5 +1,4 @@
 import React from 'react';
-import AddProduct from '../components/AddProduct';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 
@@ -8,7 +7,8 @@ class DisplayProducts extends React.Component{
 super(props);
 
 this.state = {
-    products:[]
+    products:[],
+    idModify:0
 }
     }
 showProducts = async ()=>{
@@ -16,8 +16,6 @@ showProducts = async ()=>{
      this.setState({products:response.data.body} , ()=>{ return this.state.products})
     }).catch((error)=>{ console.log(error)});
 }
-
-
 
 componentDidMount(){
     this.showProducts();
@@ -36,7 +34,9 @@ this.state.products.map( product => {
     return(
         <div key={ product.id_product}>
          <Link to={`/productdescription/${product.id_product}`}> { product.productName } </Link>
-         <img src={`data:image/jgp;base64,${product.productPhoto}`} height="100px"/>
+         <img src={`data:image/jgp;base64,${product.productPhoto}`} height="100px" alt="displaying from the database"/>
+           <Link to={`/modifyproduct/${product.id_product}`}>Modify</Link>
+           <Link to={`/deleteproduct/${product.id_product}`}>Delete</Link>
          </div> 
          )
 })

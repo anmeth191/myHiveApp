@@ -10,6 +10,7 @@ import CategoryProducts from './components/CategoryProducts';
 import Navbar from './components/Navbar';
 import AddProduct from './components/AddProduct';
 import ShoppingCart from './components/ShoppingCart';
+import ModifyProduct from './components/ModifyProduct';
 
 class App extends React.Component{
 
@@ -27,7 +28,7 @@ return(
         <Route  path="/categoryproducts/:id" component={ CategoryProducts }/>
          <Route path="/addproduct"  component={ AddProduct }/>
          <Route  path="/shoppingcart" component={ ShoppingCart }/>
-
+          <Route path="/modifyproduct/:id"  component={ ModifyProduct }/>
       </Switch>
       </Router>
   </div>

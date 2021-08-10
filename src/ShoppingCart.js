@@ -13,25 +13,25 @@ constructor(props){
 
 calculatePayment = ()=>{
     let totalPay = 0;
+    
     this.state.itemsCart.forEach( element =>{ //
-    totalPay += element.items.productPrice * element.quantity;
+        totalPay += element.payment;
     })
-      
-    this.setState({payment:  totalPay} , ()=>{ return this.state.payment})
-
-
+      this.setState({payment: totalPay} , ()=>{ return this.state.payment})
 }
 //increment or decrement the quantity
 
 
+// this function controls the quantity of the product in case that the customer decides to reduce or increment a product in the cart
+// the quantity pamater: is the actual quantity for the element that needs to be updated
+// the id is the current id of the element in the model that needs to be looped and the updated
+// the opertion parameter tell the function if the actual quantity needs to be added or substracted
 
 componentDidMount(){
 this.calculatePayment();
 
 }
 render(){
-    console.log(this.state.payment)
-    console.log(this.state.itemsCart)
     return( 
         <div> 
             <h1>Total: {`${this.state.payment}.00 $`}</h1>
@@ -44,6 +44,7 @@ render(){
                     <div>
                     <span>{element.quantity}</span>
                     </div>
+                    <h3>total:{element.payment}</h3>
                     
                     </div>    
                )
@@ -59,8 +60,11 @@ return { items: state.itemsCart }
 }
 
 
-// const updateItemsProps = (dispatch)=>{
+const updateItemsProps = (dispatch)=>{
 
-// return {  updateItem: (updatequantity , itemIndex)=>{ dispatch({ type:'UPDATE_ITEM' , updatequantity , itemIndex})}}
-// }
-export default connect(showItemsFromProps)(ShoppingCart);
+return { 
+    updateItem: (updatequantity , itemIndex)=>{ dispatch({ type:'UPDATE_ITEM' , updatequantity , itemIndex})}
+     }
+
+}
+export default connect(showItemsFromProps, updateItemsProps)(ShoppingCart);

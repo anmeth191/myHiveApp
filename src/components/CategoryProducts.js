@@ -35,7 +35,7 @@ render(){
             return (
                <div key={ product.id_product}>
                    <h1> <Link to={`/productdescription/${product.id_product}`}>{product.productName}</Link></h1>
-                   <img src={`data:image/jpg;base64,${product.productPhoto}`} height="200px" />
+                   <img src={`data:image/jpg;base64,${product.productPhoto}`} height="200px" alt="products saved in database"/>
                    </div>
              )
           })
