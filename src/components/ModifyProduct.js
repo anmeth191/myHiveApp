@@ -39,16 +39,16 @@ getCategories = async ()=>{
     productModifyGet = async ()=>{
         //send the id of the product to the API in order to fetch the correct data from the database
        axios.get(`http://127.0.0.1:8000/modifyproduct?id=${this.state.id}`).then( response =>{
-
-
+     
+       
           this.setState({product_name:response.data.body[0].productName})
           this.setState({product_description:response.data.body[0].productDescription})
           this.setState({product_price:response.data.body[0].productPrice})
           this.setState({product_unit:response.data.body[0].unitProduct})
           this.setState({product_quantity:response.data.body[0].productLevels})
-          this.setState({product_photo:response.data.body[0].productPhoto})
           this.setState({product_category:response.data.body[0].id_category})
           this.setState({product_supplier:response.data.body[0].id_supplier})
+
       
       
       
@@ -58,7 +58,23 @@ getCategories = async ()=>{
 
 submitHandler = (event)=>{
     event.preventDefault();
-    console.log(this.state)
+ this.prepateDataToUpdate();
+
+}
+
+prepateDataToUpdate = async ()=>{
+
+const updateData = new FormData();
+updateData.append('product_id' , this.state.id);
+updateData.append('product_name' , this.state.product_name);
+updateData.append('product_description' , this.state.product_description);
+updateData.append('product_price' , this.state.product_price);
+updateData.append('product_unit' , this.state.product_unit);
+updateData.append('product_quantity' , this.state.product_quantity);
+updateData.append('product_category' , this.state.product_category);
+updateData.append('product_supplier' , this.state.product_supplier);
+
+  await axios.post('http://127.0.0.1:8000/modifyproduct', updateData).then( response => { console.log( response.data.message)}).catch((error)=>{ console.log(error)});
 }
 
 componentDidMount(){
@@ -67,7 +83,12 @@ componentDidMount(){
     this.productModifyGet();
 }
 
+//these two function updates the select button if the user wants to modify the product
+changeCategory = (event)=>{this.setState({product_category:parseInt(event.target.value)})}
+changeSupplier= (event)=>{this.setState({product_supplier:parseInt(event.target.value)})}
+
 render(){   
+
 return(
     <div>
     <h1>Modify Product</h1>
@@ -111,37 +132,37 @@ return(
 
        <div>
        <label htmlFor="product_category">Product Category:  </label>
-       <select name="product_category" >
+       <select name="product_category"  value={this.state.product_category} onChange={ this.changeCategory }>
        {
-           this.state.categories.map( category =>{ 
+           this.state.categories.map( category =>{
            return(
-              <option key={category.id_category} value={this.state.product_category} onChange={ ()=>{
-                  this.setState({product_category: category.id_category})
-              }} >{category.categoryName}</option>
+              <option key={category.id_category} value={ category.id_category} >{category.categoryName}</option>
                   )
                })
        }   
        </select>
        </div>
 
+
+
+
        <div>
-       <label htmlFor="product_supplier">Product Supplier:  </label>
-       <select name="product_supplier">
+       <label htmlFor="product_category">Product Supplier:  </label>
+       <select name="product_category"  value={this.state.product_supplier} onChange={ this.changeSupplier }>
        {
-           this.state.suppliers.map( supplier =>{ 
+           this.state.suppliers.map( supplier =>{
            return(
-              <option key={ supplier.id_supplier } value={ supplier.id_supplier } onChange={()=>{ 
-                  this.setState({product_supplier: supplier.id_supplier } , ()=>{ return this.state.product_supplier})
-              }}>{supplier.supplierName}</option>
-          )
-        })
+              <option key={supplier.id_supplier} value={ supplier.id_supplier} >{supplier.supplierName}</option>
+                  )
+               })
        }   
        </select>
        </div>
 
+
        
          <div>
-         <button  type="submit">Submit Product</button>
+         <button  type="submit">Update Product</button>
          </div>
 
        </form>

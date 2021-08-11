@@ -15,7 +15,7 @@ super(props)
      product_unit:'',
      product_quantity:'',
      product_category:'',
-     product_supplier:'',
+     product_supplier:'Select a Supplier',
      product_photo:[]
   }
 }
@@ -74,6 +74,10 @@ await axios({
 //await axios.post('http://127.0.0.1:8000/products' , product_data).then( (response)=>{ console.log(response.data)}).catch( (error)=>{ console.log(error)})
 }
 
+
+changeSupplier = (event)=>{this.setState({product_supplier: parseInt(event.target.value)})}
+changeCategory = (event) =>{ this.setState({product_category: parseInt(event.target.value)})}
+
 componentDidMount(){
    this.getCategories();
     this.getSuppliers();
@@ -128,13 +132,11 @@ return(
 
            <div>
            <label htmlFor="product_category">Product Category:  </label>
-           <select name="product_category">
+           <select name="product_category" value={ this.state.product_category} onChange={ this.changeCategory }>
            {
                this.state.categories.map( category =>{ 
                return(
-                  <option key={category.id_category} value={ category.id_category} onClick={ ()=>{
-                      this.setState({product_category: category.id_category})
-                  }} >{category.categoryName}</option>
+                  <option key={category.id_category} value={ category.id_category}>{category.categoryName}</option>
                       )
                    })
            }   
@@ -143,13 +145,11 @@ return(
 
            <div>
            <label htmlFor="product_supplier">Product Supplier:  </label>
-           <select name="product_supplier">
+           <select name="product_supplier" value={this.state.product_supplier } onChange={ this.changeSupplier }>
            {
                this.state.suppliers.map( supplier =>{ 
                return(
-                  <option key={ supplier.id_supplier } value={ supplier.id_supplier } onClick={()=>{ 
-                      this.setState({product_supplier: supplier.id_supplier } , ()=>{ return this.state.product_supplier})
-                  }}>{supplier.supplierName}</option>
+                  <option key={ supplier.id_supplier } value = { supplier.id_supplier }>{supplier.supplierName}</option>
               )
             })
            }   

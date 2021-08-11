@@ -1,5 +1,6 @@
 import React from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 class ProductDescription extends React.Component{
@@ -59,22 +60,14 @@ render(){
                           <h5>{`${parseInt(product.productPrice)}.00 $`}</h5>
                           <h5>{` Inventory levels: ${product.productLevels}`}</h5>
                           <img src={`data:image/jpg;base64,${product.productPhoto}`} alt="product display coming from the database" height="200px"/>
+                         <Link to={`/modifyproduct/${product.id_product}`}>Modify</Link>
+                         
+                         
                           <button onClick={()=>{  
                               this.setState({itemAdded:1})
                               this.shoppingCartControl(product.id_product) 
                         }}>Add to the cart</button>
-                         <div>
-                         <button onClick={()=>{ 
-                             //increment the number of items when the + button is pressed and decrement when - button is pressed 
-                             //but if decrement number is less than 1 then set the state to 1
-                             this.setState({itemCount:this.state.itemCount - 1})
-                             if(this.state.itemCount <= 1 ){
-                                this.setState({itemCount:1})
-                             }
-                         }}>-</button>{this.state.itemCount}<button onClick={()=>{ 
-                             this.setState({itemCount: this.state.itemCount + 1})
-                         }}>+</button>
-                         </div>
+                        
                       </div>
                   )//end of the return
               })
