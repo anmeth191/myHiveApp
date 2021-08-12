@@ -11,7 +11,7 @@ import Navbar from './components/Navbar';
 import AddProduct from './components/AddProduct';
 import ShoppingCart from './components/ShoppingCart';
 import ModifyProduct from './components/ModifyProduct';
-
+import RegisterUser from './components/RegisterUser';
 class App extends React.Component{
 
 render(){
@@ -29,6 +29,7 @@ return(
          <Route path="/addproduct"  component={ AddProduct }/>
          <Route  path="/shoppingcart" component={ ShoppingCart }/>
           <Route path="/modifyproduct/:id"  component={ ModifyProduct }/>
+          <Route path="/register" component={ RegisterUser } />
       </Switch>
       </Router>
   </div>

@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 
 
 class Dashboard extends React.Component{
@@ -7,6 +8,7 @@ class Dashboard extends React.Component{
         return(
             <div>
            this is the Dashboard component
+           <Link to="/register"> Register </Link>
             </div>
             )
          }
