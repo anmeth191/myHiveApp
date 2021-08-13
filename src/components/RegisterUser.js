@@ -1,5 +1,5 @@
-import e from 'cors';
-import React from 'react';
+import React, { Fragment } from 'react';
+import axios from 'axios';
 
 
 class RegisterUser extends React.Component{
@@ -16,18 +16,32 @@ constructor(props){
 
 }
 
+//this function set the state for the password
+handlePassword = (event)=>{ this.setState({password:event.target.value} , ()=>{ return this.state.password });}
 
-handlePassword = (event)=>{ this.setState({password:event.target.value} , ()=>{ return this.state.password });
-
-}
+//this function set the state for the repeat password input
 handleRepeatPassword = (event)=>{ this.setState({ repeatPassword : event.target.value} , ()=>{ return this.state.repeatPassword })}
 
+//this function handles the form when is submitted
+
 handleSubmitForm = (event)=>{
-    event.preventDefault();
-    
-this.checkRegExpression();
+    //prevents de default behavior reload the page when the form is submitted
+     event.preventDefault();
+    //this function check if the passwords match the requirements in regular expressions
+    this.checkRegExpression();
 }
 
+registerUserPost = async ()=> {
+//create a data form to send it to the server
+const createUser = new FormData();
+createUser.append('userName' , this.state.username);
+createUser.append('userEmail', this.state.email);
+createUser.append('userPassword', this.state.password);
+//create the post to save the user into the database.
+ await axios.post('http://127.0.0.1:8000/register' , createUser).then( response =>{ console.log(response.data)}).catch( error =>{ console.log(error)})
+
+ this.setState({username:'',password:'',repeatPassword:'',email:''});
+}
 //this function checks if the password match the condition of at least one uppercase, one lowercase, one digit, one special character, and a minimun of eight characters 
 checkRegExpression = ()=>{
     //initialize my variables to check my regular expression NOTE IF YOU DECLARE THIS DIRECLTY IT GIVES YOU AN ERROR ABOTU LEXICAL DECLARATION !!!!!!!! I DID STRUGGLE MAN !
@@ -40,12 +54,15 @@ checkRegExpression = ()=>{
     checkPassword = this.state.password.match(regExp);
     checkRepeatPass = this.state.repeatPassword.match(regExp);
         
+
     if(this.state.password === this.state.repeatPassword && checkPassword && checkRepeatPass ){
-        this.setState({ validatePasswordMessage:'password accepted'})
-     
+        //when the password is accepted the  the post to register the user is going to be send with this method
+        this.registerUserPost();    
     }else{
-        this.setState({displayValidationMessage:true})
-        this.setState({ validatePasswordMessage:'password must contain minimum 8 letters, one upperletter, one number and one special character'})
+        //change the value of displayValidation when the password is incorrect a message is displaying 
+        this.setState({displayValidationMessage:true});
+        //the validation message
+        this.setState({ validatePasswordMessage:'password must contain minimum 8 letters, one upperletter, one number and one special character'});
     }
     
 
@@ -84,12 +101,12 @@ checkRegExpression = ()=>{
                         <input type="password" name="repeatPassword" value={this.state.repeatPassword } onChange={ this.handleRepeatPassword } required/>
                         </div>
 
-                       <div>
-                           <h5 style={ (this.state.displayValidationMessage) ? { display:'block'} : {display:'none'} }>{this.state.validatePasswordMessage}</h5>
-                           </div>
                          <div>
-                             <button type="submit"> Register</button>
-                             </div>
+                         <h5 style={ (this.state.displayValidationMessage) ? { display:'block'} : {display:'none'} }>{this.state.validatePasswordMessage}</h5>
+                         </div>
+                         <div>
+                         <button type="submit"> Register</button>
+                         </div>
                     </form>
                 </div>
         )
