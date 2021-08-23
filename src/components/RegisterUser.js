@@ -41,6 +41,7 @@ createUser.append('userPassword', this.state.password);
  await axios.post('http://127.0.0.1:8000/register' , createUser).then( response =>{ console.log(response.data)}).catch( error =>{ console.log(error)})
 
  this.setState({username:'',password:'',repeatPassword:'',email:''});
+ this.props.history.push('/login');
 }
 //this function checks if the password match the condition of at least one uppercase, one lowercase, one digit, one special character, and a minimun of eight characters 
 checkRegExpression = ()=>{
