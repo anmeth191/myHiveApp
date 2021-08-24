@@ -21,7 +21,7 @@ function LoginUser(){
     const loginData = new FormData();
     loginData.append('email' , email);
     loginData.append('password' , password)
-    axios.post('http://127.0.0.1:8000/login' , loginData)      
+    axios.post('http://127.0.0.1:8000/login' , loginData).then( response =>{ console.log(response.data)}).catch( error =>{ console.log(error)})      
 }
     
 

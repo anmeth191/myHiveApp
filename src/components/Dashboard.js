@@ -9,9 +9,13 @@ class Dashboard extends React.Component{
             <div>
            this is the Dashboard component
            <Link to="/register"> Register </Link>
+           <Link to="/login"> Login </Link>
             </div>
             )
          }
+
+
+         
 }
 
 export default Dashboard;

@@ -62,7 +62,7 @@ submitHandler = (event)=>{
 
 }
 
-prepateDataToUpdate = async ()=>{
+prepateDataToUpdate =  ()=>{
 
 const updateData = new FormData();
 updateData.append('product_id' , this.state.id);
@@ -74,7 +74,7 @@ updateData.append('product_quantity' , this.state.product_quantity);
 updateData.append('product_category' , this.state.product_category);
 updateData.append('product_supplier' , this.state.product_supplier);
 
-  await axios.post('http://127.0.0.1:8000/modifyproduct', updateData).then( response => { console.log( response.data.message)}).catch((error)=>{ console.log(error)});
+  axios.post('http://127.0.0.1:8000/modifyproduct', updateData).then( response => { console.log( response.data.message)}).catch((error)=>{ console.log(error)});
 }
 
 componentDidMount(){

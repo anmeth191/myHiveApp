@@ -1,7 +1,6 @@
 import React from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
-
-import Dashboard from './Dashboard';
+import Dashboard from './components/Dashboard';
 import DisplayCategory from './components/DisplayCategory';
 import DisplaySuppliers from './components/DisplaySuppliers';
 import DisplayProducts from './components/DisplayProducts';
@@ -12,7 +11,7 @@ import AddProduct from './components/AddProduct';
 import ShoppingCart from './components/ShoppingCart';
 import ModifyProduct from './components/ModifyProduct';
 import RegisterUser from './components/RegisterUser';
-import LoginUser from './LoginUser';
+import LoginUser from './components/LoginUser';
 class App extends React.Component{
 
 render(){
