@@ -23,25 +23,32 @@ componentDidMount(){
 
 render(){
 return(
-<div>
-    <h1>Add a product to your inventory</h1>
-    <Link to="/addproduct">Add Product</Link>
-
-<h1>Products availables</h1>
+<div className="displayProductsGlobal">    
+<div className="displayProducts">
 {   
-(this.state.products.length === 0) ? <h1 key="no" >DataBase is empty</h1> : 
+(
+this.state.products.length === 0) ? <h1 key="no" >DataBase is empty</h1> : 
 this.state.products.map( product => {
     return(
-        <div key={ product.id_product}>
-         <Link to={`/productdescription/${product.id_product}`}> { product.productName } </Link>
-         <img src={`data:image/jgp;base64,${product.productPhoto}`} height="100px" alt="displaying from the database"/>
-           <Link to={`/modifyproduct/${product.id_product}`}>Modify</Link>
-           <Link to={`/deleteproduct/${product.id_product}`}>Delete</Link>
-         </div> 
-         )
-})
-}
 
+        <div className="displayProducts__container"  key={ product.id_product}>
+        <Link className="linkPhoto" to={`/productdescription/${product.id_product}`}>
+         <div  className="displayProducts__container__photo">
+         <img  className="displayProducts__container__photo-image" src={`data:image/jgp;base64,${product.productPhoto}`} height="100px" alt="displaying products in our store"/>
+         </div>
+         <div className="displayProducts__container__information">
+         <h3 className="displayProducts__container__information-price">${product.productPrice}.00</h3>
+         <span className="displayProducts__container__information-name">{product.productName}</span>
+         <span className="displayProducts__container__information-unit">{product.unitProduct}</span>
+         </div>
+       </Link>
+
+       <button>Add to Cart</button>
+        </div> 
+  )
+ })
+}
+</div>
 </div>
 )
 }//end of the render method

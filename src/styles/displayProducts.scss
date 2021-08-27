@@ -1,0 +1,55 @@
+.displayProductsGlobal{
+    background: gray;
+    padding: 1rem;
+
+& .displayProducts{
+    width: 80%;
+    height: 100%;
+    padding: 2rem;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(4 , minmax(min-content , 1fr));
+    grid-gap: 2rem;
+    background: white;
+
+    
+    &__container{
+        padding: 1rem 1rem;
+        border: 0.1rem solid black;
+        &__photo{
+            &-image{
+                object-fit: contain;
+                width: 100%;
+                height: 20rem;
+            }//end of the image
+        }//end of the photo container
+
+
+        &__information{
+            text-decoration: none;
+            color: black;
+            padding: 2rem 1rem;
+            text-align: center; 
+
+            &-price{
+                color: blue;
+                font-size: 1.6rem;
+                display: block;
+            }
+
+            &-name , &-unit{
+                display: block;
+                font-size: 1.2rem;
+            }
+        }
+    }//end of the container
+
+}//end of the display products
+}//end of the display products global
+
+
+
+
+.linkPhoto{
+    text-decoration: none;
+}

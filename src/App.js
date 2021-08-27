@@ -1,4 +1,5 @@
 import React from 'react';
+import style from './styles/style.scss';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Dashboard from './components/Dashboard';
 import DisplayCategory from './components/DisplayCategory';
@@ -12,6 +13,8 @@ import ShoppingCart from './components/ShoppingCart';
 import ModifyProduct from './components/ModifyProduct';
 import RegisterUser from './components/RegisterUser';
 import LoginUser from './components/LoginUser';
+
+
 class App extends React.Component{
 
 render(){
