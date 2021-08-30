@@ -11,10 +11,10 @@
     grid-template-columns: repeat(4 , minmax(min-content , 1fr));
     grid-gap: 2rem;
     background: white;
-
+    text-align: center;
     
     &__container{
-        padding: 1rem 1rem;
+        padding: 2rem 1rem;
         border: 0.1rem solid black;
         &__photo{
             &-image{
@@ -42,6 +42,7 @@
                 font-size: 1.2rem;
             }
         }
+
     }//end of the container
 
 }//end of the display products

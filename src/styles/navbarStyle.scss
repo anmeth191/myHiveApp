@@ -1,0 +1,44 @@
+.navbar{
+background:black;
+font-size: 1.5rem;
+
+&__container{
+
+width: 90%;
+margin: 0 auto;
+display: grid;
+grid-template-columns: repeat(2 , minmax(min-content, 1fr));
+padding: 1.5rem;
+
+
+&__title{
+    padding: 1rem;
+    &__h2{
+        &--link{
+        text-decoration: none;
+        color: white;
+
+        &:active , &:link{
+            color: black;
+        }
+        }//end of the link
+    }//end of the h2 
+}//end of the title
+
+&__nav{
+    padding: 1rem;
+    &__ul{
+        &--li{
+          list-style: none;
+          float: right;
+
+          &--link{
+              text-decoration: none;
+              color: white;
+              padding: 0 3rem;
+          }
+        }//end of the li
+    }//end of the ul
+}//end of the nav
+}//end of the container
+}//end of the navbar

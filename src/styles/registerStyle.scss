@@ -1,0 +1,44 @@
+.registerForm{
+
+    background: gray;
+    height:100vh;
+    position: relative;
+
+ 
+     &__container{
+         background: black;
+         width: 30%;
+         position: absolute;
+         top: 40%;
+         left: 50%;
+         transform: translate(-50% , -50%);
+         padding: 2.5rem;
+         border-radius: 0.5rem;
+
+         &__title{
+           background: green;
+           padding: 2rem;
+           border-bottom: 0.1rem solid white;
+           color: white;
+           
+           &--h3{
+           font-size: 1.7rem;
+            display: block;
+            text-transform: uppercase;
+           }//end of the h3
+
+           &--span{
+            font-size: 1.1rem;
+
+           }//end of the span
+         }//end of the title on top of the form
+        
+         &__form{
+           padding: 0.5rem;
+           width: 100%;
+         &__element{
+              padding: 1rem;
+            }//end of the element
+         }//end of the form
+        }//end of the container
+}//end of the register Form

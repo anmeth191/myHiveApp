@@ -63,7 +63,7 @@ checkRegExpression = ()=>{
         //change the value of displayValidation when the password is incorrect a message is displaying 
         this.setState({displayValidationMessage:true});
         //the validation message
-        this.setState({ validatePasswordMessage:'password must contain minimum 8 letters, one upperletter, one number and one special character'});
+        this.setState({ validatePasswordMessage:'Password must contain minimum 8 letters, one upperletter, number and special character'});
     }
     
 
@@ -79,36 +79,46 @@ checkRegExpression = ()=>{
 
     render(){
         return(
-            <div>
-                <form onSubmit={ this.handleSubmitForm }> 
-                    <div>
-                        <label htmlFor="username">Username:</label>
-                        <input type="text" name="username"  value={this.state.username} onChange={(event)=>{ this.setState({username:event.target.value})}
+          <div className="registerForm">
+             <div className="registerForm__container">
+
+                <div className="registerForm__container__title">
+                    <h3 className="registerForm__container__title--h3">Sign Up</h3>
+                    <span className="registerForm__container__title--span">Please fill in this form to create an account.</span>
+                    </div>
+                    
+                <form className="registerForm__container__form" onSubmit={ this.handleSubmitForm }> 
+                  <div className="registerForm__container__form__element">
+                        <label className="label" htmlFor="username">Username:</label>
+                        <input placeholder="Enter Username"  className="textInput" type="text" name="username"  value={this.state.username} onChange={(event)=>{ this.setState({username:event.target.value})}
                         }/>
+                   </div>
+
+                        <div className="registerForm__container__form__element">
+                        <label className="label" htmlFor="email">Email:</label>
+                        <input placeholder="Enter Email" className="textInput" type="email" name="email" value={ this.state.email } onChange={(event)=>{ this.setState({email:event.target.value})}}/>
                         </div>
 
-                        <div>
-                        <label htmlFor="email">Email:</label>
-                        <input type="email" name="email" value={ this.state.email } onChange={(event)=>{ this.setState({email:event.target.value})}}/>
+                        <div className="registerForm__container__form__element">
+                        <label className="label" htmlFor="password">Password:</label>
+                        <input placeholder="Enter Password" className="textInput" type="password" name="password" value={ this.state.password } onChange={ this.handlePassword } required/>
                         </div>
 
-                        <div>
-                        <label htmlFor="password">Password:</label>
-                        <input type="password" name="password" value={ this.state.password } onChange={ this.handlePassword } required/>
+                        <div className="registerForm__container__form__element">
+                        <label className="label" htmlFor="repeatPassword">Repeat Password:</label>
+                        <input placeholder="Repeat Password" className="textInput" type="password" name="repeatPassword" value={this.state.repeatPassword } onChange={ this.handleRepeatPassword } required/>
                         </div>
 
-                        <div>
-                        <label htmlFor="repeatPassword">Repeat Password:</label>
-                        <input type="password" name="repeatPassword" value={this.state.repeatPassword } onChange={ this.handleRepeatPassword } required/>
-                        </div>
-
-                         <div>
-                         <h5 style={ (this.state.displayValidationMessage) ? { display:'block'} : {display:'none'} }>{this.state.validatePasswordMessage}</h5>
+                         <div className="registerForm__container__form__element validationMessage">
+                         <h5 className="validationMessage__message" style={ (this.state.displayValidationMessage) ? { display:'block'} : {display:'none'} }>{this.state.validatePasswordMessage}</h5>
                          </div>
-                         <div>
-                         <button type="submit"> Register</button>
+                         
+                         <div className="registerForm__container__form__element">
+                         <button  className="button" type="submit"> Register</button>
                          </div>
+
                     </form>
+                  </div>
                 </div>
         )
     }

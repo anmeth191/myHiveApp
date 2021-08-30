@@ -27,7 +27,7 @@ return(
 <div className="displayProducts">
 {   
 (
-this.state.products.length === 0) ? <h1 key="no" >DataBase is empty</h1> : 
+this.state.products.length === 0) ? <h1 key="no" >...Loading</h1> : 
 this.state.products.map( product => {
     return(
 
@@ -43,7 +43,7 @@ this.state.products.map( product => {
          </div>
        </Link>
 
-       <button>Add to Cart</button>
+       <button className="displayProducts__container__button button" >Add to Cart</button>
         </div> 
   )
  })
