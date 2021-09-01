@@ -84,7 +84,6 @@ checkRegExpression = ()=>{
 
                 <div className="registerForm__container__title">
                     <h3 className="registerForm__container__title--h3">Sign Up</h3>
-                    <span className="registerForm__container__title--span">Please fill in this form to create an account.</span>
                     </div>
                     
                 <form className="registerForm__container__form" onSubmit={ this.handleSubmitForm }> 

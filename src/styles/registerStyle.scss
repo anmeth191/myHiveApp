@@ -1,44 +1,45 @@
+@import './variablesRules.scss';
+@import './mixinsRules.scss';
+
 .registerForm{
 
-    background: gray;
+    background: $secondary-color;
     height:100vh;
     position: relative;
 
  
      &__container{
-         background: black;
-         width: 30%;
-         position: absolute;
-         top: 40%;
+         background: $primary-color;
+         width: 45%;
+       
+         @include positionElement;
+         top: 45%;
          left: 50%;
-         transform: translate(-50% , -50%);
-         padding: 2.5rem;
+         padding: $regular-padding;
          border-radius: 0.5rem;
 
          &__title{
-           background: green;
-           padding: 2rem;
-           border-bottom: 0.1rem solid white;
-           color: white;
-           
+           color: $primary-textColor;
+           padding: $small-padding;
+
            &--h3{
-           font-size: 1.7rem;
+           font-size: $bigFont;
             display: block;
             text-transform: uppercase;
            }//end of the h3
 
            &--span{
-            font-size: 1.1rem;
-
+            font-size: $regularFont;
            }//end of the span
          }//end of the title on top of the form
         
          &__form{
            padding: 0.5rem;
            width: 100%;
-         &__element{
-              padding: 1rem;
-            }//end of the element
+         
+        &__element{
+            padding:$small-padding;
+          }//end of the element
          }//end of the form
         }//end of the container
 }//end of the register Form

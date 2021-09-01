@@ -49,24 +49,25 @@ this.productDescription();
 
 render(){ 
     return(
-      <div>
+      <div className="description">
           {  
           this.state.product.map( (product) => {
                   return( 
-                      <div key={product.id_product}>
-                          <h1>{ product.productName }</h1>
-                          <span>{ product.productDescription }</span>
-                          <h5>Product Category: { product.id_category }</h5>
-                          <h5>{`${parseInt(product.productPrice)}.00 $`}</h5>
-                          <h5>{` Inventory levels: ${product.productLevels}`}</h5>
-                          <img src={`data:image/jpg;base64,${product.productPhoto}`} alt="product display coming from the database" height="200px"/>
-                         <Link to={`/modifyproduct/${product.id_product}`}>Modify</Link>
-                         
-                         
-                          <button onClick={()=>{  
+                      <div className="description__container" key={product.id_product}>
+                          <div className="description__container__content">
+                          <h1 className="description__container__content--title title1">{ product.productName }</h1>
+                          <span className="description__container__content--span spanText">{ product.productDescription }</span>
+                          <h2 className="description__container__content--title title2">{`${parseInt(product.productPrice)}.00 $`}</h2>
+                          <button className="description__container__image--button button "onClick={()=>{  
                               this.setState({itemAdded:1})
                               this.shoppingCartControl(product.id_product) 
-                        }}>Add to the cart</button>
+                          }}>Add to the cart
+                          </button>
+                          </div>
+                          <div className="description__container__image">
+                          <img className="description__container__image--photo" src={`data:image/jpg;base64,${product.productPhoto}`} alt="product display coming from the database" height="200px"/>
+                          </div>
+
                         
                       </div>
                   )//end of the return

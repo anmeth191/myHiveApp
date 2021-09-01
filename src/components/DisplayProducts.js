@@ -39,11 +39,11 @@ this.state.products.map( product => {
          <div className="displayProducts__container__information">
          <h3 className="displayProducts__container__information-price">${product.productPrice}.00</h3>
          <span className="displayProducts__container__information-name">{product.productName}</span>
-         <span className="displayProducts__container__information-unit">{product.unitProduct}</span>
          </div>
        </Link>
-
+        <div>
        <button className="displayProducts__container__button button" >Add to Cart</button>
+        </div>
         </div> 
   )
  })

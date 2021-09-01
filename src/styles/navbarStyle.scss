@@ -1,6 +1,9 @@
+@import './variablesRules.scss';
+
+
 .navbar{
-background:black;
-font-size: 1.5rem;
+background: $primary-color;
+font-size: $regularFont;
 
 &__container{
 
@@ -8,15 +11,15 @@ width: 90%;
 margin: 0 auto;
 display: grid;
 grid-template-columns: repeat(2 , minmax(min-content, 1fr));
-padding: 1.5rem;
+padding: $small-padding;
 
 
 &__title{
-    padding: 1rem;
+    padding: $small-padding;
     &__h2{
         &--link{
         text-decoration: none;
-        color: white;
+        color:$primary-textColor;
 
         &:active , &:link{
             color: black;
@@ -26,7 +29,7 @@ padding: 1.5rem;
 }//end of the title
 
 &__nav{
-    padding: 1rem;
+    padding: $small-padding;
     &__ul{
         &--li{
           list-style: none;
@@ -34,8 +37,8 @@ padding: 1.5rem;
 
           &--link{
               text-decoration: none;
-              color: white;
-              padding: 0 3rem;
+              color:$primary-textColor;
+              padding: 0 $large-padding;
           }
         }//end of the li
     }//end of the ul

@@ -1,9 +1,13 @@
+//
+@import './variablesRules.scss';
+
+
 //universal styles selector for all the label classNames 
 .label{
     display: block;
-    color: white;
+    color: $primary-textColor;
     font-weight: 1000;
-    font-size: 1.3rem;
+    font-size: $regularFont;
     margin-bottom: 0.5rem;
 }
 
@@ -17,9 +21,10 @@
 
 //universal style for selector with all the button className
 .button{
-    background: green;
-    padding: 1rem 3rem;
-    color: white;
+    background: $primary-dark;
+    padding: $small-padding $large-padding;
+    width: 100%;
+    color: $secondary-textColor;
     border:none;
     border-radius: 0.5rem;
 }
@@ -27,10 +32,30 @@
 .validationMessage{
 &__message{    
 z-index: 1;
-background: orange;   
-color: black;
+background: $primary-dark;   
+color: $secondary-textColor;
 padding: 1rem;
-font-size: 1rem;
+font-size: $smallFont;
 border-radius: 0.5rem;
-   } 
+} 
 }
+
+
+.title1{
+    font-size: 2.5rem;
+    display: block;
+    
+}
+
+.title2{
+    display: block;
+    padding: 1rem;
+    margin-top:1rem;   
+}
+
+.spanText {
+    display:block;
+    margin-top:2rem;
+    font-size:1.2rem;
+}
+
